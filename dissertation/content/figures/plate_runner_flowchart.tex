@@ -1,0 +1,66 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+%    minimum height=2em]
+\begin{tikzpicture}[node distance = 2cm and 10cm, auto]
+\node [block] (setgeom) {(4.2) Set Geometry};
+\node [above = 0.5cm of setgeom] (start) {Start};
+\node [block, right = 0.5cm of setgeom] (gettype) {(4.3) Get Type};
+\node [block, below = 0.5cm of setgeom] (geteltfilename) {(4.5) Get Elt Filename};
+\node [block, below = 0.5cm of geteltfilename] (getgenericmodelfilename) {(4.11) Get Generic Model Filename};
+\node [block, below = 0.5cm of getgenericmodelfilename] (getspecificmodelfilename) {(4.8) Get Specific Model Filename};
+\node [block, below = 0.5cm of getspecificmodelfilename] (findpinlocations) {Find Pin Locations};
+\node [block, below = 0.5cm of findpinlocations] (optimizebc) {(4.12) Optimize BC};
+\node [block, above right = 0.5cm of optimizebc] (getmodeltype) {(4.13) Get Model Type};
+\node [block, right = 0.5cm of optimizebc] (getinitialbc) {(4.14) Get Initial BC};
+\node [block, below right = 5cm of optimizebc] (runmodel) {(4.15) Run Model};
+\node [block, above = 0.5cm of runmodel] (modifybc) {(4.16) Modify BC};
+\node [block, above right = 0.5cm of runmodel] (runwarp3d) {Run WARP3D};
+\node [block, text width = 12em, right = 0.5cm of runmodel] (findjextractresults) {(4.18) Find \(J\), (4.17) Get BPF Filename, (4.19) Extract Results};
+\node [block, text width = 12em, below right = 0.5cm of runmodel] (getmeshfilenamegetnodecoordinates) {(4.20) Get Mesh Filename, (4.22) Get Node Coordinates};
+\node [block, below = 0.5cm of runmodel] (getcmod) {(4.23) Get CMOD};
+\node [block, text width = 7em, below = 0.5cm of getcmod] (getnodalresults) {(4.21) Get Nodal Results (displacements)};
+\node [block, below left = 0.5 cm of runmodel] (interpolatej) {(4.24) Interpolate \(J\)};
+\node [block, left = 0.5 cm of runmodel] (jcmodobjective) {(4.25) \(J\)-CMOD Objective};
+\node [block, below = 11cm of optimizebc] (postprocess) {(4.26) Postprocess};
+\node [block, above right = 0.5cm of postprocess] (getbpffilenameextractresults) {(4.17) Get BPF Filename, (4.19) Extract Results};
+\node [block, text width = 12em, right = 0.5cm of postprocess] (getmeshfilenamegetnodecoordinates2) {(4.20) Get Mesh Filename, (4.22) Get Node Coordinates};
+\node [block, below right = 0.5cm of postprocess] (getnodalresults2) {(4.21) Get Nodal Results (reactions)};
+\node [block, below = 0.5cm of postprocess] (getcmod2) {(4.23) Get CMOD};
+\node [block, text width = 7em, below = 0.5cm of getcmod2] (getnodalresults3) {(4.21) Get Nodal Results (displacements)};
+\node [block, below left = 0.5cm of postprocess] (findj) {(4.18) Find J};
+\node [above left = 0.5cm of postprocess] (end) {End};
+
+\draw [->] (start) -- (setgeom);
+\draw [<->] (setgeom) -- (gettype);
+\draw [->] (setgeom) -- (geteltfilename);
+\draw [->] (geteltfilename) -- (getgenericmodelfilename);
+\draw [->] (getgenericmodelfilename) -- (getspecificmodelfilename);
+\draw [->] (getspecificmodelfilename) -- (findpinlocations);
+\draw [->] (findpinlocations) -- (optimizebc);
+\draw [<->] (optimizebc) -- (getmodeltype);
+\draw [<->] (optimizebc) -- (getinitialbc);
+\draw [<->] (optimizebc) -- (runmodel);
+\draw [<->] (runmodel) -- (modifybc);
+\draw [<->] (runmodel) -- (runwarp3d);
+\draw [<->] (runmodel) -- (findjextractresults);
+\draw [<->] (runmodel) -- (getmeshfilenamegetnodecoordinates);
+\draw [<->] (runmodel) -- (getcmod);
+\draw [<->] (getcmod) -- (getnodalresults);
+\draw [<->] (runmodel) -- (interpolatej);
+\draw [<->] (runmodel) -- (jcmodobjective);
+\draw [->] (optimizebc) -- (postprocess);
+\draw [<->] (postprocess) -- (getbpffilenameextractresults);
+\draw [<->] (postprocess) -- (getmeshfilenamegetnodecoordinates2);
+\draw [<->] (postprocess) -- (getnodalresults2);
+\draw [<->] (postprocess) -- (getcmod2);
+\draw [<->] (getcmod2) -- (getnodalresults3);
+\draw [<->] (postprocess) -- (findj);
+\draw [->] (postprocess) -- (end);
+\end{tikzpicture}
+\end{document}

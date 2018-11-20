@@ -1,0 +1,71 @@
+%%%
+%%% Save this file as JOBNAME-packages-loaded-before-hyperref.sty, where
+%%% JOBNAME is the base filename for your main thesis/dissertation .tex 
+%%% file.
+%%%
+
+% Use this file to add packages that should be loaded *before* hyperref.
+% See [1-3] for a list of packages that have weird interactions with
+% hyperref, and should be loaded either before or after it. See [4-5] for
+% a list of packages that should be loaded in a particular order, but
+% don't necessarily involve hyperref.
+
+% [1] http://mirrors.ctan.org/macros/latex/contrib/hyperref/README
+% [2] http://tex.stackexchange.com/questions/4515/whats-the-right-order-when-loading-packages
+% [3] http://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
+% [4] http://tex.stackexchange.com/questions/3090/packages-that-need-to-be-included-in-a-specific-order
+% [5] http://www.macfreek.nl/mindmaster/LaTeX_package_conflicts
+% \usepackage{beamerarticle}
+
+% https://tex.stackexchange.com/questions/427451/dot-between-chapter-number-and-figure-number-disapear-after-update
+\makeatletter
+\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
+\makeatother
+
+\usepackage{longtable,ltabptch} % For multi-page tables
+\usepackage{multirow} % For multi-row table cells
+\usepackage{booktabs} % publication-quality tables
+
+%\usepackage[numbers,sort&compress,square]{natbib}
+%\usepackage{natbib}
+%\usepackage[firstinits=true,citestyle=authoryear,natbib=true,backend=biber]{biblatex}
+\usepackage[backend=biber,natbib=true,style=numeric-comp,sorting=none,firstinits=true]{biblatex}
+\defbibheading{bibliography}[\bibname]{%
+  \thispagestyle{plain}%
+  \phantomsection%
+  \addcontentsline{toc}{chapter}{\bibname}%
+  \beforepartskip%
+  \begin{center}%
+    \bfseries{\MakeUppercase{\bibname}}%
+  \end{center}
+  \afterpartskip%
+  \bibmark%
+  \clearpage%
+  \prebibhook%
+}
+\addbibresource{content/cse_bibliography.bib}
+\addbibresource{content/v2.bib}
+
+\usepackage{notoccite} % to keep references in order, even when citations end up in ToC or LoF/LoT
+
+\usepackage{graphicx} \graphicspath{{content/figures/}}
+
+\usepackage[binary-units=true]{siunitx}
+\sisetup{group-separator=,range-units=single}
+\DeclareSIUnit\MPa{\mega\Pascal}
+\DeclareSIUnit\mm{\milli\meter}
+
+\usepackage{bm} % bold math
+\usepackage[textsize=tiny]{todonotes} % for keeping track of things to fix
+\newcommand{\sjpmargin}[1]{\todo[color=green!40]{SJP: #1}{}}
+\newcommand{\sjpinline}[1]{\todo[inline, color=green!40]{SJP: #1}{}}
+\newcommand{\dawmargin}[1]{\todo[color=blue!40]{DAW: #1}{}}
+\newcommand{\dawinline}[1]{\todo[inline, color=blue!40]{DAW: #1}{}}
+\newcommand{\grmargin}[1]{\todo[color=red!40]{GR: #1}{}}
+\newcommand{\grinline}[1]{\todo[inline, color=red!40]{GR: #1}{}}
+\usepackage{cool} % for partial derivative macros
+\usepackage{centernot} % centers the not symbol horizontally
+\usepackage{fancyvrb}
+\usepackage[chapter]{algorithm}
+\usepackage{placeins}
+\usepackage{makecell}

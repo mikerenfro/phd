@@ -1,0 +1,42 @@
+\usepackage{lipsum}
+\abstract{%
+ASTM E2899 ``Standard Test Method for Measurement of Initiation Toughness in Surface Cracks Under Tension and Bending'' is the only ASTM fracture toughness standard applicable to surface cracks in elastic-plastic materials and requires nonlinear finite element analysis to calculate the elastic-plastic crack driving force \J.
+NASA's Tool for Analysis of Surface Cracks (TASC) satisfies the analysis requirements of ASTM E2899, but only for tension conditions.
+To date, there is no comparable method for measuring elastic-plastic fracture toughness of surface cracks in plates loaded in bending.
+Existing tools and prior ASTM standards are limited to linear elastic materials or simpler two-dimensional crack geometries.
+
+The primary goal of this research was to create a tool satisfying the analysis requirements of ASTM E2899 for bending conditions.
+A set of 600 elastic-plastic finite element results for flat plates in bending was constructed, covering a wide range of materials \((100 \leq \frac{E}{\Sys} \leq 1000)\) and geometries \((0.2 \leq \frac{a}{c} \leq 1.0, 0.2 \leq \frac{a}{t} \leq 0.8)\).
+Algorithms and techniques for generating consistent models were developed with a series of verification and validation (V\&V) exercises to ensure the accuracy and reproducibility of the results.
+The results were reduced to a database of \J variations around the crack front and correlated measures of crack mouth opening displacement (CMOD).
+Additionally, TASC was modified to support the new database, creating a tool for engineers to satisfy the analysis requirements of ASTM E2899 without resorting to purpose-built finite element models for each new geometry and material examined.
+
+In addition, the applicability of both the estimation methods developed by the Electric Power Research Institute (EPRI) and the load separation method for surface cracks in bending was explored.
+These methods had only been applied to surface cracks in tension or to simpler two-dimensional geometries in tension or bending.
+The non-dimensional crack driving force \hone was shown to have an unexpected relationship to the elastic modulus \(E\), which needs further study.
+The established load separation technique was shown to not be directly applicable for bending conditions.
+Additionally, when the same procedure was applied to a broader range of crack geometries in tension, no single key curve of separation parameters versus effective uncracked ligament length could be demonstrated across the full set of geometries, indicating that more work remains to identify the limitations of load separation.
+}
+\doctype{Dissertation}
+\degree{Doctor of Philosophy} \department{Engineering}
+\graduationmonth{December} \graduationyear{2018}
+
+\dedication{%
+  \begin{center}
+    This dissertation is dedicated to Carolyn, my family, and my friends.
+  \end{center}
+}
+
+\acknowledgments{%
+  This dissertation would not have been possible without the guidance and patience of both my advisor, Dr. Chris Wilson, and my committee members, Dr. Brian O'Connor, Dr. Sally Pardue, Dr. Guillermo Ramirez, and Dr. Dale Wilson.
+  The Center for Manufacturing Research's laboratory facilities were instrumental in the background for this research: the Mechanical Properties Testing Laboratory, Materials Characterization Laboratory, and Computer Aided Engineering (CAE) Laboratory.
+  Information Technology Services' High Performance Computing (HPC) cluster facilitated the main computational portions of this research.
+  Critical tools for this research include Quest Integrity's FEACrack, UIUC's WARP3D, Dassault's Abaqus, Anaconda's Python distribution, and the NumPy, SciPy, and Pandas Python modules (plus the copious amounts of Python resources at \url{https://stackoverflow.com/}).
+  My supervisors and technical leads in both the CMR and in ITS (Dr. Ken Currie, Dr. Vahid Motevalli, Yvette Clark, and Dwight Hutson) were very gracious in allowing a flexible work schedule to complete this research.
+  My coworkers in both groups, particularly Joel Seber, have always been on my side.
+  Thanks to my M.S. advisor, Dr. J. Richard Houghton, for his support, instruction, and contagious curiosity that started my academic career.
+  The M.S. research of Eric Quillen provided the motivation and starting point for the automatic generation of finite element models used in this research.
+  Special thanks go to Dr. Phillip Allen of NASA Marshall Space Flight Center, and also to ASTM Committee E08 on Fatigue and Fracture; their work in standardizing fracture mechanics testing and procedures were the foundation for the improvements made in this research.
+}
+\committeechair{Christopher D. Wilson}
+\committeemembers{Brian M. O'Connor, Sally J. Pardue, Guillermo Ramirez, Dale A. Wilson}

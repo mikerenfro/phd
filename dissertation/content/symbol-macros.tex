@@ -1,0 +1,100 @@
+%%% Macros for commonly-used symbols
+
+% \ensuremath (from amsmath) so that we can use commands in regular text,
+% or in math mode
+% \xspace to ensure that we can easily write \DeltaK or \DeltaK-decreasing and
+% not \DeltaK{} or \DeltaK{}-decreasing
+
+\usepackage{xspace}
+
+\newcommand{\hone}{\ensuremath{h_1}\xspace} % this is no shorter than $h_1$, but much easier to type overall. No, we can't use \h1 unless we define a command for \h that gobbles up the next block of text.
+\newcommand{\htwo}{\ensuremath{h_2}\xspace}
+\newcommand{\hthree}{\ensuremath{h_3}\xspace}
+\newcommand{\hfour}{\ensuremath{h_4}\xspace}
+
+\newcommand{\G}{\ensuremath{\bm{\mathcal{G}}}\xspace}
+\newcommand{\Gc}{\ensuremath{\G_\textnormal{c}}\xspace} % G critical
+
+\newcommand{\M}{\ensuremath{M}\xspace}
+
+\newcommand{\K}{\ensuremath{K}\xspace}
+\newcommand{\Kap}{\ensuremath{\K_\textnormal{ap}}\xspace} % K apparent
+\newcommand{\Kef}{\ensuremath{\K_\textnormal{eff}}\xspace} % K effective
+\newcommand{\Kel}{\ensuremath{\K_\textnormal{el}}\xspace} % K elastic
+\newcommand{\Kpl}{\ensuremath{\K_\textnormal{pl}}\xspace} % K plastic
+\newcommand{\Ktotal}{\ensuremath{\K_\textnormal{total}}\xspace} % K total
+\newcommand{\Kr}{\ensuremath{\K_\textnormal{r}}\xspace} % K ratio
+\newcommand{\Kmin}{\ensuremath{\K_\textnormal{min}}\xspace} % K min
+\newcommand{\Kmax}{\ensuremath{\K_\textnormal{max}}\xspace} % K max
+\newcommand{\DeltaK}{\ensuremath{\Delta \K}\xspace} % Delta K
+\newcommand{\DeltaKth}{\ensuremath{\Delta \K_{\textnormal{th}}}\xspace} % K threshold
+\newcommand{\KI}{\ensuremath{\K_\textnormal{I}}\xspace} % K mode I
+\newcommand{\Kc}{\ensuremath{\K_\textnormal{c}}\xspace} % K critical
+\newcommand{\KIc}{\ensuremath{\K_\textnormal{Ic}}\xspace} % K mode I critical
+\newcommand{\Kapp}{\ensuremath{\K_\textnormal{app}}\xspace} % K apparent
+\newcommand{\DeltaKeff}{\ensuremath{\Delta K_\textnormal{eff}}\xspace} % Delta J
+
+\newcommand{\J}{\ensuremath{J}\xspace}
+\newcommand{\Jel}{\ensuremath{\J_\textnormal{el}}\xspace} % J elastic
+\newcommand{\Jpl}{\ensuremath{\J_\textnormal{pl}}\xspace} % J plastic
+\newcommand{\Jtotal}{\ensuremath{\J_\textnormal{total}}\xspace} % J total
+\newcommand{\DeltaJ}{\ensuremath{\Delta \J}\xspace} % Delta J
+\newcommand{\Jmin}{\ensuremath{\J_\textnormal{min}}\xspace} % J min
+\newcommand{\Jmax}{\ensuremath{\J_\textnormal{max}}\xspace} % J max
+\newcommand{\DeltaJeff}{\ensuremath{\Delta J_\textnormal{eff}}\xspace} % Delta J effective
+
+\newcommand{\etael}{\ensuremath{\eta_\textnormal{el}}\xspace}
+\newcommand{\etapl}{\ensuremath{\eta_\textnormal{pl}}\xspace} % plastic work factor, through crack
+\newcommand{\zetapl}{\ensuremath{\zeta_\textnormal{pl}}\xspace} % plastic work factor, surface crack
+\newcommand{\Deltapl}{\ensuremath{\Delta_\textnormal{pl}}\xspace}
+\newcommand{\Sij}{\ensuremath{S_{i,j}}\xspace}
+
+\newcommand{\dadn}{\ensuremath{\frac{da}{dN}}\xspace}
+\newcommand{\dadc}{\ensuremath{\frac{da}{dc}}\xspace}
+\newcommand{\dcdn}{\ensuremath{\frac{dc}{dN}}\xspace}
+\newcommand{\da}{\ensuremath{da}\xspace}
+\newcommand{\dc}{\ensuremath{dc}\xspace}
+
+\newcommand{\Rb}{\ensuremath{R_{\textnormal{b}}}\xspace}
+
+\newcommand{\ry}{\ensuremath{r_{\textnormal{y}}}\xspace} % first-order estimate of plastic zone size
+\newcommand{\rp}{\ensuremath{r_{\textnormal{p}}}\xspace} % second-order estimate of plastic zone size
+
+\newcommand{\Pmin}{\ensuremath{P_\textnormal{min}}\xspace} % P min
+\newcommand{\Pmax}{\ensuremath{P_\textnormal{max}}\xspace} % P max
+
+\newcommand{\Sb}{\ensuremath{\sigma_{\textnormal{b}}}\xspace} % Stress in bending
+\newcommand{\St}{\ensuremath{\sigma_{\textnormal{t}}}\xspace} % Stress in tension
+\newcommand{\Sf}{\ensuremath{\sigma_{\textnormal{f}}}\xspace} % Stress at failure
+\newcommand{\Smax}{\ensuremath{\sigma_{\textnormal{max}}}\xspace} % Stress at failure
+\newcommand{\Sxx}{\ensuremath{\sigma_{xx}}\xspace} % Normal stress in x direction
+\newcommand{\Syy}{\ensuremath{\sigma_{yy}}\xspace} % Normal stress in y direction
+\newcommand{\Sxy}{\ensuremath{\tau_{xy}}\xspace} % Shear stress in x direction on y face
+\newcommand{\Szz}{\ensuremath{\sigma_{zz}}\xspace} % Normal stress in z direction
+\newcommand{\Sxz}{\ensuremath{\tau_{xz}}\xspace} % Shear stress in x direction on z face
+\newcommand{\Syz}{\ensuremath{\tau_{yz}}\xspace} % Shear stress in y direction on z face
+\newcommand{\Sone}{\ensuremath{\sigma_{1}}\xspace} % First principal stress
+\newcommand{\Stwo}{\ensuremath{\sigma_{2}}\xspace} % Second principal stress
+\newcommand{\Sthree}{\ensuremath{\sigma_{3}}\xspace} % Third principal stress
+\newcommand{\Sys}{\ensuremath{\sigma_{\textnormal{ys}}}\xspace} % Yield strength in shear
+\newcommand{\Sy}{\ensuremath{\sigma_{\textnormal{y}}}\xspace} % Yield strength in tension
+\newcommand{\Sut}{\ensuremath{\sigma_{\textnormal{ut}}}\xspace} % Ultimate tensile strength
+\newcommand{\Sc}{\ensuremath{\sigma_{\textnormal{c}}}\xspace} % Plastic collapse strength
+\newcommand{\Sr}{\ensuremath{\sigma_{\textnormal{r}}}\xspace} % Stress at failure
+\newcommand{\Szero}{\ensuremath{\sigma_{0}}\xspace} % Flow stress
+\newcommand{\Sigij}{\ensuremath{\sigma_{ij}}\xspace}
+\newcommand{\deltaij}{\ensuremath{\delta_{ij}}\xspace} % Kronecker delta
+
+\newcommand{\Sinner}{\ensuremath{S_\textnormal{inner}}\xspace}
+\newcommand{\Souter}{\ensuremath{S_\textnormal{outer}}\xspace}
+
+\newcommand{\ac}{\ensuremath{a_{\textnormal{c}}}\xspace} % Flaw length critical
+\newcommand{\aapp}{\ensuremath{a_{\textnormal{app}}}\xspace} % Flaw length apparent
+
+\newcommand{\deltat}{\ensuremath{\delta_\textnormal{t}}\xspace} % CTOD
+
+\newcommand{\kt}{\ensuremath{k_\textnormal{t}}\xspace} % Stress concentration
+
+\newcommand{\T}{\ensuremath{T}\xspace} % T stress for two-parameter fracture
+\newcommand{\Be}{\ensuremath{\beta}\xspace} % biaxiality ratio
+\newcommand{\Q}{\ensuremath{Q}\xspace}

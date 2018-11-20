@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\begin{document}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+%    minimum height=2em]
+\begin{tikzpicture}[node distance = 2cm and 10cm, auto]
+\node [block] (setgeom) {(4.2) Set Geometry};
+\node [above = 0.5cm of setgeom] (start) {Start};
+\node [block, right = 0.5cm of setgeom] (gettype) {(4.3) Get Type};
+\node [block, below = 2cm of setgeom] (buildmesh) {(4.4) Build Mesh};
+\node [block, above right = 0.5 cm of buildmesh] (geteltfilename) {(4.5) Get Elt Filename};
+\node [block, right = 0.5 cm of buildmesh] (adjustrollerpositions) {(4.6) Adjust Roller Positions};
+\node [block, below right = 0.5 cm of buildmesh] (runfeacrack) {Run FEACrack};
+\node [block, below = 3cm of buildmesh] (setmaterial) {(4.7) Set Material};
+\node [block, right = 0.5cm of setmaterial] (getspecificmodelfilename) {(4.8) Get Specific Model Filename};
+\node [block, below right = 0.5cm of setmaterial] (lppl) {(4.9) LPPL};
+\node [below = 0.5cm of setmaterial] (end) {End};
+\draw [->] (start) -- (setgeom);
+\draw [<->] (setgeom) -- (gettype);
+\draw [->] (setgeom) -- (buildmesh);
+\draw [<->] (buildmesh) -- (geteltfilename);
+\draw [<->] (buildmesh) -- (adjustrollerpositions);
+\draw [<->] (buildmesh) -- (runfeacrack);
+\draw [->] (buildmesh) -- (setmaterial);
+\draw [<->] (setmaterial) -- (getspecificmodelfilename);
+\draw [<->] (setmaterial) -- (lppl);
+\draw [->] (setmaterial) -- (end);
+%\draw [<->] (setgeom) -- (gettype);
+%\path [line] (setgeom) -- (buildmesh);
+%\path [line] (setgeom) -- (gettype);
+%\path [line] (gettype) -- (setgeom);
+%\path [line] (buildmesh) -- (setmaterial);
+\end{tikzpicture}
+\end{document}

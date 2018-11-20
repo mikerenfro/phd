@@ -1,0 +1,21 @@
+% Set the colors and overall frame layout
+\usetheme{Cookeville}%
+% Allow captions on floats in presentations, but disable numbering, as not every float in
+% the printed document will automatically show up in the presentation.
+\setbeamertemplate{caption}{\insertcaption}%
+\setbeamertemplate{caption label separator}{}%
+% Beamer doesn't support chapters, only parts.
+% The printed document won't use parts, only chapters.
+\let\chapter\part%
+% Show a mostly-blank separator page at the start of each part (chapter)
+\AtBeginPart{%
+\frame{\partpage}%
+% Could add a ToC for the part in the frame here, but as you can see it all in
+% the headers above the frame, doesn't seem worthwhile.
+}%
+% Disable part numbering on title pages for parts. https://tex.stackexchange.com/questions/183616/
+\setbeamertemplate{part page}{%
+\begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}%
+  \usebeamerfont{part title}\insertpart\par%
+\end{beamercolorbox}%
+}%

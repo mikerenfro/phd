@@ -1,0 +1,41 @@
+\chapter{Conclusions and Recommendations for Future Work} \label{chap:conclusions}
+
+The first and primary conclusion of this research is the realization of the original intended scope of ASTM E2899 by adding results and interpolations for surface cracks in flat plates subjected to bending conditions.
+The analysis requirements of ASTM E2899 are far more complex than other fracture mechanics standards, requiring elastic-plastic finite element analysis to solve for the crack driving forces in terms of \J.
+No other test standard of the ASTM E08 Committee on Fatigue and Fracture requires analysis beyond the capabilities of hand calculations, spreadsheets, or simple computer programs.
+Though the NASA TASC program was developed to simplify the analysis tasks required by ASTM E2899, allowing experimentalists to concentrate on their experiments, TASC only included support for analysis of surface cracks in tension.
+As ASTM E2899 is a standard encompassing both tension and bending conditions for flat plates, the original TASC program and its model database fell short of providing users with a complete tool for both tension and bending conditions.
+This research fills the gap left by the original TASC program.
+
+Specifically, this work allows users to satisfy the analysis requirements for ASTM E2899 in both tension and bending conditions, without needing to construct purpose-built elastic-plastic finite element models for every combination of geometry and material.
+This first required the creation of a database of 600 elastic-plastic finite element models and results for flat plates with surface cracks subjected to bending.
+Constructing accurate bending models presented several challenges not present in the creation of tension models, including differences in constraint, the need for boundaries to model crack closure, and accounting for changing moment arms in bending moment calculations.
+A subset of these results have been verified and validated against other finite element analysis programs, and also against existing experimental data.
+After the bending model database was constructed, the NASA TASC program was modified to incorporate these bending results, and interpolated results from the bending models were validated against experimental data as seen in \Cref{fig:tasc-force-cmod-validation,fig:experimental-validation}.
+
+Beyond the calculations of crack driving force in the first conclusion of this research, a second major conclusion is the extension of of EPRI NP-1931 handbook-style calculations for the non-dimensional crack driving force \hone for surface cracks in plates subjected to bending conditions.
+While the investigation conducted here was only a beginning, it identified problems with adapting the EPRI method for through cracks in fully-plastic conditions to surface cracks.
+
+Specifically, although
+\hone in bending falls along a single curve for some geometries and hardening exponents as seen in \Cref{fig:h1_warp_ac02_at02_n20}, there is enough variation seen with high-hardening materials (low \(n\) values) or deeply-cracked bodies to indicate a general relationship between \hone and the elastic modulus \(E\) that vanishes under certain conditions.
+
+The third and final major conclusion of this research is the examination of the load separation technique applied to flat plates with surface cracks in either tension or bending.
+As with the EPRI \hone study, this investigation is preliminary, but demonstrated unexpected results compared to the published literature.
+
+Specifically, despite verifying the initial tension results of \citet{sharobeamlandes1994} resulting in a single key curve to estimate \J from a single specimen, that curve is no longer valid when a larger set of crack geometries is considered.
+This applies to both tension and bending conditions as seen in \Cref{fig:Sij_bet_full_E0500_n04,fig:bet_Sij_tension_14_annotated}.
+
+Future work related to this research includes further testing of the modified TASC program for all types of results beyond the demonstrated validation of load-CMOD and stress-CMOD curves.
+To improve the quality of the TASC program interpolation, additional values for material properties or crack geometry could be added to the database.
+Alternatively, the interpolation scheme could be modified from linear to piecewise cubic, which would ensure smooth transitions from one interpolation region to another, and possibly reduce the number of additional material properties or crack geometry values required in the database.
+The use of internal tractions at the roller locations could be replaced by modeling contact with rigid cylinders representing the experimental rollers.
+
+Future work related to the EPRI \hone component of this research includes additional investigation of the conditions that lead to a single \hone curve for certain combinations of material and geometry.
+The region of interest selected for Abaqus fully-plastic checks needs to be explored to determine if the \hone dependence on \(E\) is present for fully-plastic regions extending throughout the entire tensile region of uncracked ligament.
+
+Future work related to the load separation component of this research includes improving the range of plastic strain in Abaqus models, either by investigating alternate mesh techniques, remeshing the deformed plate, or moving to an explicit analysis code that is more suited to large strains.
+Additionally, an alternative to the \(\frac{b_e}{t}\) equivalent crack size used in tension models should be investigated, to see if that results in a smoother key curve required to make a true single-specimen technique for a wider range of surface crack geometry.
+The load separation technique should be examined further, as neither the full set of tension nor bending models demonstrated a single-specimen key curve as indicated by the smaller set of tension results previously available.
+It may be that single specimen estimations are effectively limited to a range of similar crack depths, regardless of crack aspect ratio.
+Finally, additional experiments should be performed to validate each of the analytical techniques used in this research.
+

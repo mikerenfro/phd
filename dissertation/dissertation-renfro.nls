@@ -1,0 +1,142 @@
+\begin{thenomenclature} 
+
+ \nomgroup{Symbols}
+
+  \item [{\(A_\textnormal{el}\)}]\begingroup area under elastic region of load-dis\-place\-ment record\nomeqref {2.57}
+		\nompageref{37}
+  \item [{\(A_\textnormal{pl}\)}]\begingroup area under plastic region of load-dis\-place\-ment record\nomeqref {2.57}
+		\nompageref{37}
+  \item [{BSI}]\begingroup British Standards Institute\nomeqref {2.27}
+		\nompageref{22}
+  \item [{CMOD}]\begingroup crack mouth opening displacement\nomeqref {1.0}
+		\nompageref{7}
+  \item [{CTOD}]\begingroup crack tip opening displacement\nomeqref {A.28}
+		\nompageref{166}
+  \item [{EPRI}]\begingroup Electric Power Research Institute\nomeqref {1.0}
+		\nompageref{7}
+  \item [{\(E\)}]\begingroup elastic modulus\nomeqref {B.0}
+		\nompageref{174}
+  \item [{FAD}]\begingroup failure assessment diagram\nomeqref {2.16}
+		\nompageref{13}
+  \item [{FFP}]\begingroup fitness for purpose\nomeqref {2.16}
+		\nompageref{13}
+  \item [{\(F\)}]\begingroup Newman-Raju bound\-ary-cor\-rec\-tion factor\nomeqref {A.25}
+		\nompageref{156}
+  \item [{\(F\)}]\begingroup work done by external loads\nomeqref {A.35}
+		\nompageref{168}
+  \item [{\G}]\begingroup strain energy release rate with respect to crack size\nomeqref {A.0}
+		\nompageref{145}
+  \item [{\(H\)}]\begingroup half plate height\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\J}]\begingroup elastic-plastic fracture parameter\nomeqref {A.29}
+		\nompageref{167}
+  \item [{\K}]\begingroup linear elastic stress intensity factor\nomeqref {A.0}
+		\nompageref{145}
+  \item [{\(M\)}]\begingroup dimensionless deformation parameter for plates in bending\nomeqref {4.0}
+		\nompageref{80}
+  \item [{\M}]\begingroup applied bending moment\nomeqref {A.9}
+		\nompageref{147}
+  \item [{NDT}]\begingroup Non-destructive testing\nomeqref {2.16}
+		\nompageref{13}
+  \item [{ODB}]\begingroup Abaqus output database\nomeqref {B.0}
+		\nompageref{177}
+  \item [{\(P\)}]\begingroup applied load\nomeqref {A.35}
+		\nompageref{168}
+  \item [{\(P_0\)}]\begingroup limit load per unit thickness\nomeqref {2.44}
+		\nompageref{33}
+  \item [{\(Q\)}]\begingroup ellipse shape factor\nomeqref {A.14}
+		\nompageref{149}
+  \item [{\Sij}]\begingroup load separation separation parameter\nomeqref {2.61}
+		\nompageref{37}
+  \item [{\(T_i\)}]\begingroup components of traction vector\nomeqref {A.30}
+		\nompageref{168}
+  \item [{\(U\)}]\begingroup strain energy stored in a body\nomeqref {A.35}
+		\nompageref{168}
+  \item [{\(W\)}]\begingroup half plate width\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(a\)}]\begingroup crack depth for surface cracks\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(a\)}]\begingroup half crack length for through cracks\nomeqref {A.0}
+		\nompageref{145}
+  \item [{\(b\)}]\begingroup half crack depth for embedded elliptical crack\nomeqref {A.14}
+		\nompageref{150}
+  \item [{\(b\)}]\begingroup uncracked ligament\nomeqref {2.45}
+		\nompageref{33}
+  \item [{\(c\)}]\begingroup half crack width for surface cracks\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(h\)}]\begingroup distance from surface to center of embedded elliptical crack\nomeqref {A.14}
+		\nompageref{150}
+  \item [{\(n\)}]\begingroup Ramberg-Osgood strain hardening exponent\nomeqref {A.44}
+		\nompageref{170}
+  \item [{\(n_j\)}]\begingroup components of vector normal to contour path\nomeqref {A.32}
+		\nompageref{168}
+  \item [{\(r\)}]\begingroup radial distance from the crack tip\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\rp}]\begingroup second order estimate of plastic zone radius\nomeqref {A.6}
+		\nompageref{146}
+  \item [{\ry}]\begingroup first order estimate of plastic zone radius\nomeqref {A.5}
+		\nompageref{146}
+  \item [{\(t\)}]\begingroup plate thickness\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(u_i\)}]\begingroup components of displacement\nomeqref {A.30}
+		\nompageref{168}
+  \item [{\(w\)}]\begingroup strain energy density\nomeqref {A.30}
+		\nompageref{168}
+  \item [{\(x_\textnormal{c}\)}]\begingroup horizontal coordinate of point along circle inscribed in semi-elliptical surface crack\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(x_\textnormal{e}\)}]\begingroup horizontal coordinate of point along front of semi-elliptical surface crack\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(y_\textnormal{c}\)}]\begingroup vertical coordinate of point along circle inscribed in semi-elliptical surface crack\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(y_\textnormal{e}\)}]\begingroup vertical coordinate of point along front of semi-elliptical surface crack\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\Deltapl}]\begingroup plastic component of specimen displacement\nomeqref {2.58}
+		\nompageref{37}
+  \item [{\(\Delta\)}]\begingroup load-line displacement of a plate\nomeqref {A.36}
+		\nompageref{169}
+  \item [{\(\Delta\)}]\begingroup specimen displacement\nomeqref {2.55}
+		\nompageref{36}
+  \item [{\(\Phi\)}]\begingroup complete elliptic integral of the second kind\nomeqref {A.13}
+		\nompageref{149}
+  \item [{\(\Pi\)}]\begingroup total potential energy\nomeqref {A.0}
+		\nompageref{145}
+  \item [{\(\alpha\)}]\begingroup Ramberg-Osgood yield offset parameter\nomeqref {A.44}
+		\nompageref{170}
+  \item [{\(\deltat\)}]\begingroup crack tip opening displacement (identical to CTOD)\nomeqref {A.28}
+		\nompageref{166}
+  \item [{\(\epsilon_{ij}\)}]\begingroup strain tensor\nomeqref {A.32}
+		\nompageref{168}
+  \item [{\(\nu\)}]\begingroup Poisson's ratio\nomeqref {B.0}
+		\nompageref{174}
+  \item [{\(\phi\)}]\begingroup parametric angle defining position along crack front\nomeqref {A.9}
+		\nompageref{147}
+  \item [{\(\sigma_0\)}]\begingroup Ramberg-Osgood reference stress value, often equal to yield strength\nomeqref {A.44}
+		\nompageref{170}
+  \item [{\Sone}]\begingroup first principal stress\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\Stwo}]\begingroup second principal stress\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\(\sigma_{ij}\)}]\begingroup stress tensor\nomeqref {A.32}
+		\nompageref{168}
+  \item [{\St}]\begingroup applied tensile stress\nomeqref {A.0}
+		\nompageref{145}
+  \item [{\Sxx}]\begingroup normal stress, $x$ direction\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\Sys}]\begingroup material yield stress\nomeqref {A.5}
+		\nompageref{145}
+  \item [{\Syy}]\begingroup normal stress, $y$ direction\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\Szz}]\begingroup normal stress, $z$ direction\nomeqref {A.18}
+		\nompageref{152}
+  \item [{\Sxy}]\begingroup shear stress on $x$ face in $y$ direction\nomeqref {A.18}
+		\nompageref{151}
+  \item [{\Sxz}]\begingroup shear stress on $x$ face in $z$ direction\nomeqref {A.18}
+		\nompageref{151}
+  \item [{\Syz}]\begingroup shear stress on $y$ face in $z$ direction\nomeqref {A.18}
+		\nompageref{151}
+  \item [{\(\theta\)}]\begingroup angle from crack plane\nomeqref {A.4}
+		\nompageref{145}
+  \item [{\(\eta\)}]\begingroup multiplicative factor for load-dis\-place\-ment record used to calculate \J\nomeqref {2.57}
+		\nompageref{37}
+
+\end{thenomenclature}

@@ -1,0 +1,74 @@
+\mode<article>{\lstset{basicstyle=\ttfamily}}
+\mode<presentation>{\lstset{basicstyle=\ttfamily\small}}
+
+% Because of the [ignorenonframetext] option to beamer, all content in input files 
+% common to both the printed and presentation version of the document has to be input with
+% \mode<all>
+\mode<all>{\input{content/symbol-macros}}
+
+\author{Michael W. Renfro}
+
+\mode<article>{\title{Analysis of Surface Cracks in Plates Loaded \\
+in Bending under Elastic-Plastic\\
+and Fully-Plastic Conditions}}
+\mode<presentation>{\title[Analysis of Surface Cracks in Plates under EP and FP Conditions]{Analysis of Surface Cracks in Plates Loaded in Bending under Elastic-Plastic and Fully-Plastic Conditions}
+}
+
+\mode<article>{%this code only runs in article mode (for the printed thesis)
+\input{content/dissertation-metadata}
+}
+
+\mode<presentation>{% this code only runs in presentation mode, not in article mode
+\input{content/presentation-theme}
+}
+\begin{document}
+\mode<presentation>{
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+}
+\mode<article>{
+\begin{Spacing}{1}
+\tableofcontents*  % Leave the * after this command to keep the table of
+                   % contents from appearing in the table of contents
+\listoftables      % Tables
+\listoffigures     % Figures
+%\lstlistoflistings % Program Listings, from the listings package
+%\listoftodos
+%%% If you want to rename your list of symbols, edit the
+%%% \renewcommand{\nomname} command accordingly.
+\renewcommand{\nomname}{LIST OF SYMBOLS}
+\printnomenclature[0.5in] % Symbols
+\end{Spacing}
+\mainmatter
+}
+\mode<presentation>{
+% Last-minute adjustments:
+% - get titles and frame numbers for start of each chapter,
+% - adjust the NavigationX numbers and titles below to match,
+% - rebuild the presentation PDF.
+\begin{frame}[plain]
+Outline
+\begin{itemize}
+\item \structure{\hyperlink{Navigation3}{Introduction}}
+\end{itemize}
+\end{frame}
+}
+% Chapters go like this.
+\mode<all>{
+\input{content/introduction}
+\input{content/literature-review}
+\input{content/partial-verification-tensile-sc} % modeling preparation for research tasks
+\input{content/research-plan-bending} % research plan for bending models for tasc
+\input{content/research-plan-load-separation}
+\input{content/research-plan-h1-epri}
+\input{content/results-discussion}
+\input{content/conclusions}
+\appendix
+\input{content/app-intro-fracture}
+\input{content/app-quillen-rework}
+\input{content/app-verification-allen-wells}
+\input{content/bibliography}
+}
+\vita{content/vita}
+\end{document}

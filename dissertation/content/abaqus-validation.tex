@@ -1,0 +1,142 @@
+\chapter{Validation of WARP3D \J Results with Abaqus} \label{chap:abaqus-validation}
+
+% Here we document the solution of the FEACrack models inside Abaqus. Pretty good agreement except near \(\phi=0\).
+
+In order to validate the WARP3D results developed in \Cref{chap:development-bending-models}, a subset of models were created for analysis in Abaqus.
+The subset of models represent combinations of the most extreme geometry and material values:
+\(\frac{a}{c} = 0.2\text{ and } 1.0\), 
+\(\frac{a}{t} = 0.2\text{ and } 0.8\), 
+\(E = 100\text{ and } 1000\), and
+\(n = 3\text{ and } 20\).
+Four \verb|.elt| files used in the WARP3D models for the combinations of \(\frac{a}{c}\) and \(\frac{a}{t}\) values were manually opened in FEACrack, and FEACrack's program options were modified to write Abaqus input files instead of WARP3D input files.
+Material properties included in the input file would be modified in an Abaqus Python script.
+FEACrack's application of traction conditions in WARP3D input files was not supported in Abaqus, so they were replaced with displacement values for the inner roller location extracted from WARP3D results.
+Even if these values are not identical, the purpose of the validation is to compare the \J-CMOD curves calculated in WARP3D to those calculated in Abaqus.
+
+Abaqus input files created from FEACrack are imported using the \verb|mdb.ModelFromInputFile| Python function, removing the need for the geometry creation and meshing effort detailed in \Cref{chap:app-quillen-rework}.
+A sample mesh created by FEACrack is shown in \Cref{fig:abq_plate_ac02_at02}.
+Elastic material properties were replaced with correct values for \(E\) and \(\nu\), and since Abaqus does not support a true linear plus power law material behavior, an extended range of stress-strain curve values were calculated to ensure no element stress or strain values exceed that range.
+
+An analytically-rigid body was constructed a planar face at \(z=0\), and serves the same purpose as the elastic boundary plane from \Cref{sec:warp-elastic-boundary}.
+Frictionless contact behavior was added to the Abaqus model, and a reference point on the rigid body was fixed in all degrees of freedom.
+All but two load steps created by FEACrack were deleted, leaving only the ones defining symmetry, contact, and outer roller support conditions.
+A new load step was created where a displacement boundary condition derived from the WARP3D displacement results was applied to all nodes coincident with the inner roller.
+The final composition of an example bending model in Abaqus can be seen in \Cref{fig:abq_bc_ac02_at02}.
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.8\columnwidth]{{abq_plate_ac02_at02}}
+\caption{\label{fig:abq_plate_ac02_at02} Example Abaqus bending model from FEACrack (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.2\))}
+\end{figure}
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\columnwidth]{{abq_bc_ac02_at02}}
+\caption{\label{fig:abq_bc_ac02_at02} Example Abaqus assembly and boundary conditions (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.2\))}
+\end{figure}
+
+Final Abaqus files were written, and smaller models were tested interactively on a laptop virtual machine before the full set of 16 models was solved on TTU's HPC cluster.
+Abaqus output databases were collected, data for \(z\) direction displacement of node 1 was used as a measure of one-half the experimental CMOD, and data for \J values at \(\phi = \) \SI{0}{\degree}, \SI{30}{\degree}, and \SI{90}{\degree} were extracted.
+As seen in \Crefrange{fig:abq_wrp_ac02_at02_E0100}{fig:abq_wrp_ac10_at08_E1000}, Abaqus \J and CMOD values at \(\phi = \) \SI{30}{\degree} and \SI{90}{\degree} are nearly coincident with the values calculated in WARP3D, while the values for \(\phi = \) \SI{0}{\degree} are in close agreement except for cases of deeply highly elliptical cracks \((\frac{a}{c}, \frac{a}{t})=(0.2, 0.8)\) for any material and semicircular cracks for stiff materials \((\frac{a}{c}, E) = (1.0, 1000)\)\todo{Come up with better conclusions here.}.
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at02_E0100_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at02_E0100_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac02_at02_E0100} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.2\), \(E=100\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at02_E1000_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at02_E1000_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac02_at02_E1000} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.2\), \(E=1000\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at08_E0100_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at08_E0100_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac02_at08_E0100} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.8\), \(E=100\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at08_E1000_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac02_at08_E1000_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac02_at08_E1000} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=0.2\), \(\frac{a}{t}=0.8\), \(E=1000\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at02_E0100_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at02_E0100_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac10_at02_E0100} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=1.0\), \(\frac{a}{t}=0.2\), \(E=100\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at02_E1000_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at02_E1000_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac10_at02_E1000} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=1.0\), \(\frac{a}{t}=0.2\), \(E=1000\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at08_E0100_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at08_E0100_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac10_at08_E0100} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=1.0\), \(\frac{a}{t}=0.8\), \(E=100\))}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at08_E1000_n03}}
+\subcaption{\(n=3\)}
+\end{minipage}
+\begin{minipage}{0.45\columnwidth}
+\includegraphics[width=\columnwidth]{{abq_wrp_ac10_at08_E1000_n20}}
+\subcaption{\(n=20\)}
+\end{minipage}
+\caption{\label{fig:abq_wrp_ac10_at08_E1000} \J comparison between Abaqus and WARP3D (\(\frac{a}{c}=1.0\), \(\frac{a}{t}=0.8\), \(E=1000\))}
+\end{figure}

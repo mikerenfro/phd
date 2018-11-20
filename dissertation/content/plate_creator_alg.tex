@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{algorithm,algpseudocode}
+\usepackage{amsmath}
+
+\algnewcommand{\algorithmicand}{\textbf{ and }}
+\algnewcommand{\algorithmicor}{\textbf{ or }}
+\algnewcommand{\OR}{\algorithmicor}
+\algnewcommand{\AND}{\algorithmicand}
+
+\begin{document}
+\begin{algorithm}
+  \caption{Plate Creator}
+  \label{plate_creator}
+  \begin{algorithmic}
+    \Procedure{Plate Creator}{} \Comment{Create a series of WARP3D input files}
+    \State Read lists of $\frac{a}{t}$, $\frac{a}{c}$, $\frac{E}{S_{\text{ys}}}$, $n$ values from configuration
+    \State Read $t$, $S_\text{ys}$, global .elt file from configuration
+    \ForAll{$\frac{a}{c}$ values}
+      \ForAll{$\frac{a}{t}$ values}
+        \State $(a, c, L, W, S_{\text{in}}, S_{\text{out}}) \gets \Call{Set Geometry}{\text{global .elt file}, \frac{a}{c}, \frac{a}{t}, t}$
+        \State $\text{generic mesh} \gets \Call{Build Mesh}{\text{.elt file}, a, c, t, L, W, S_{\text{in}}, S_{\text{out}}}$
+        \ForAll{$\frac{E}{S_{\text{ys}}}$ values}
+          \State $E \gets (\frac{E}{S_{\text{ys}}})(S_{\text{ys}})$
+          \ForAll{$n$ values}
+            \State $\text{WARP3D input} \gets \Call{Set Material}{\text{generic mesh}, E, S_{\text{ys}}, n}$
+          \EndFor
+        \EndFor
+      \EndFor
+    \EndFor
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Set Geometry}
+  \label{set_geometry}
+  \begin{algorithmic}
+    \Procedure{Set Geometry}{$\text{global .elt file}, a/c, a/t, t$}
+    \State $a \gets (a/t)(t)$
+    \State $c \gets a/(a/c)$
+    \If{$c > t$}
+      \State $W \gets 5c$
+    \Else
+      \State $W \gets 5t$
+    \EndIf
+    \State $\text{model type} \gets \Call{Get Type}{\text{global .elt file}}$
+    \If{model type = 'bending'}
+      \State $S_{\text{in}} \gets W$
+      \State $S_{\text{ou}} \gets 2W$
+      \If{$2 W > 1.1 S_{\text{out}}$}
+        \State $L \gets 2 W$
+      \Else
+        \State $L \gets 1.1 S_{\text{out}}$
+      \EndIf
+    \Else
+      \State $S_{\text{in}} \gets \text{Null}$
+      \State $S_{\text{out}} \gets \text{Null}$
+      \State $L \gets 2 W$
+    \EndIf
+    \State \textbf{return} $(a, c, W, L, S_{\text{in}}, S_{\text{out}})$
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Get Type}
+  \label{get_type}
+  \begin{algorithmic}
+    \Procedure{Get Type}{global .elt file}
+      \If{'"*use bottom load pin plate ty ' found in 'Notes:' field}
+        \If{'RigidSurfaceData\_Radius' found twice}
+          \If{'RigidSurfaceData\_PinLocation' found twice}
+            \State model type $\gets$ 'bending'
+          \Else
+            \State model type $\gets$ 'invalid'
+          \EndIf
+        \EndIf
+      \Else
+        \State model type $\gets$ 'tension'
+      \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Build Mesh}
+  \label{build_mesh}
+  \begin{algorithmic}
+    \Procedure{Build Mesh}{{global .elt file}, $a$, $c$, $t$, $L$, $W$, $S_{\text{inner}}$, $S_{\text{outer}}$}
+      \State {model .elt file} $\gets$ \Call{Get Elt Filename}{{global .elt file}, $a$, $c$, $L$, $W$, $t$} 
+      \State Copy {global .elt file} to {model .elt file}
+      \If{$S_{\text{in}} \neq \text{Null} \AND S_{\text{out}} \neq \text{Null}$}
+        \State \Call{Adjust Roller Positions}{model .elt file, $S_{\text{in}}$, $S_{\text{out}}$}
+      \EndIf
+      \State Run FEACrack program on model .elt file, using $a$, $2c$, $t$, $L$, and $W$
+      \State \textbf{return} \text{generic mesh file} \Comment{'tens\_ac1.0\_at0.8\_L10.00\_W05.00\_wrp.inp'}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Get Elt Filename}
+  \label{get_elt_filename}
+  \begin{algorithmic}
+    \Procedure{Get Elt Filename}{global .elt file, $a$, $c$, $L$, $W$, $t$}
+      \State prefix $\gets$ global .elt file basename \Comment{remove .elt extension from file}
+      \State middle $\gets$ '\_ac$(\frac{a}{c})$\_at$(\frac{a}{t})$\_L$(L)$\_W$(W)$'
+      \State suffix $\gets$ '.elt'
+      \State \textbf{return} prefix + middle + suffix \Comment{concatenate terms}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Adjust Roller Positions}
+  \label{adjust_roller_positions}
+  \begin{algorithmic}
+    \Procedure{Adjust Roller Positions}{model .elt file, $S_{\text{in}}$, $S_{\text{out}}$}
+    \If{first 'RigidSurfaceData\_PinLocation' found}
+      \State Change $z$ value of location to $S_{\text{in}}$
+    \EndIf
+    \If{second 'RigidSurfaceData\_PinLocation' found}
+      \State Change $z$ value of location to $S_{\text{out}}$
+    \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Set Material}
+  \label{set_material}
+  \begin{algorithmic}
+    \Procedure{Set Material}{generic mesh, $E$, $S_{\text{ys}}$, $n$}
+    \If{'stress-strain curve      1' found}
+      \State change stress-strain curve data to \Call{LPPL}{$E$, $S_{\text{ys}}$, $n$}
+    \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{LPPL}
+  \label{lppl}
+  \begin{algorithmic}
+    \Procedure{LPPL}{$E$, $S_{\text{ys}}$, $n$}
+    \State $\epsilon_{\text{pl1}} \gets (0.001, 0.002, \cdots , 0.008)$
+    \State $\epsilon_{\text{pl2}} \gets (0.013, 0.018, 0.023, 0.028)$
+    \State $\epsilon_{\text{pl3}} \gets (0.038, 0.048, \cdots , 0.108)$
+    \State $\epsilon_{\text{ys}} \gets \frac{S_{\text{ys}}}{E}$
+    \State $\epsilon \gets \epsilon_{\text{ys}} + (\epsilon_{\text{pl1}}, \epsilon_{\text{pl2}}, \epsilon_{\text{pl3}})$
+    \State $\sigma \gets S_{\text{ys}}  (\frac{\epsilon}{\epsilon_{\text{ys}}})^{\frac{1}{n}}$
+    \State \textbf{return} $\epsilon$, $\sigma$
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Get Model Filename}
+  \label{get_model_filename}
+  \begin{algorithmic}
+    \Procedure{Get Model Filename}{generic mesh, $E$, $S_{\text{ys}}$, $n$}
+      \State prefix $\gets$ global .elt file basename \Comment{remove .elt extension from file}
+      \State middle $\gets$ '\_ac$(\frac{a}{c})$\_at$(\frac{a}{t})$\_L$(L)$\_W$(W)$'
+      \State suffix $\gets$ '.elt'
+      \State \textbf{return} prefix + middle + suffix \Comment{concatenate terms}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\end{document}

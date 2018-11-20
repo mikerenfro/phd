@@ -1,0 +1,23 @@
+%\usetheme{split}
+\usetheme{Malmoe}
+\definecolor{TTUpurple}{cmyk}{0.79,0.90,0,0}
+\definecolor{TTUyellow}{cmyk}{0,0.10,1.0,0}
+\usecolortheme{rose}
+\usecolortheme[named=TTUpurple]{structure}
+\setbeamercolor*{structure}{fg=TTUpurple}
+\setbeamercolor*{palette secondary}{fg=TTUyellow}
+\setbeamercolor*{titlelike}{parent=structure}
+\setbeamercolor*{frametitle}{fg=TTUpurple,bg=white}
+\setbeamercolor*{normal text}{fg=black}
+\setbeamercolor*{alerted text}{fg=TTUpurple} % used in alert block title and all alerted text
+\setbeamercolor*{example text}{parent=normal text,fg=TTUpurple} % used in example block list symbols
+\setbeamercolor*{block title example}{fg=black,bg=TTUyellow}
+%\renewcommand*\insertshorttitle{%
+%  \hyperlinksectionstart{\secname}\hfill%
+%  \insertframenumber}
+\setbeamertemplate{navigation symbols}{}
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill%
+  \insertframenumber}

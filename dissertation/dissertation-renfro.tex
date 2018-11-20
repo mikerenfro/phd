@@ -1,0 +1,44 @@
+% !TEX program = latexmk
+% !TEX TS-program = pdflatexmk
+
+\documentclass[twoside,10pt]{ttuthesis}
+
+\lstset{basicstyle=\ttfamily}
+
+\input{content/symbol-macros}
+
+\author{Michael W. Renfro}
+
+\title{Analysis of Surface Cracks in Plates Loaded \\
+in Bending under Elastic-Plastic\\
+and Fully-Plastic Conditions}
+
+\input{content/dissertation-metadata}
+
+\crefname{lstlisting}{program}{programs}
+\Crefname{lstlisting}{Program}{Programs}
+
+\begin{document}
+\begin{Spacing}{1}
+\tableofcontents*  % Leave the * after this command to keep the table of
+                   % contents from appearing in the table of contents
+\listoftables      % Tables
+\listoffigures     % Figures
+\renewcommand{\nomname}{LIST OF SYMBOLS}
+\printnomenclature[0.5in] % Symbols
+\end{Spacing}
+\mainmatter
+
+\input{content/introduction}
+\input{content/literature-review}
+\input{content/partial-verification-tensile-sc}
+\input{content/research-plan-bending}
+\input{content/results-discussion}
+\input{content/conclusions}
+\appendix
+\input{content/app-intro-fracture}
+\input{content/app-quillen-rework}
+\input{content/app-verification-allen-wells}
+\input{content/bibliography}
+\vita{content/vita}
+\end{document}
