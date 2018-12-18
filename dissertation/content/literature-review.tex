@@ -151,21 +151,21 @@ and as \(P \rightarrow \infty \),
 \(\tilde{J}_\textnormal{pl} \gg \tilde{J}_\textnormal{el}\), \(\frac{P}{P_0} \rightarrow \infty \) and \(\J_\textnormal{r} \rightarrow 0 \).
 
 The influence of the hardening exponent \(n\) on the FAD for a center-cracked panel in plane stress with \(\frac{a}{W} = 0.5\) is shown in \Cref{fig:fad-ccp-multiple-n} (with \(S_{\text{r}} = \Sr\)), where materials with increased stress hardening are more likely to fail in fracture than in exceeding material strength.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\columnwidth]{FAD-variance-n-modified}
+\caption[Failure assessment diagram of center-cracked panel with multiple hardening exponents]{\label{fig:fad-ccp-multiple-n} Failure assessment diagram of center-cracked panel with multiple hardening exponents \cite{epri1981}}
+\end{figure}
 The influence of plane stress and plane strain conditions on the FAD for a center-cracked panel and a compact tension specimen with \(\frac{a}{W} = 0.5, n = 10\) is shown in \Cref{fig:fad-ccp-ct}.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\columnwidth]{FAD-variance-geometry-modified}
+\caption[Failure assessment diagram of center-cracked panel and compact tension specimen]{\label{fig:fad-ccp-ct} Failure assessment diagram of center-cracked panel and compact tension specimen \cite{epri1981}}
+\end{figure}
 The effect of crack length on a plane strain center-cracked panel with \(n = 10\) is shown in \Cref{fig:fad-crack-lengths}.
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{FAD-variance-n-modified}
-\caption[Failure assessment diagram of center-cracked panel with multiple hardening exponents]{\label{fig:fad-ccp-multiple-n} Failure assessment diagram of center-cracked panel with multiple hardening exponents \cite{epri1981}}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[width=0.5\columnwidth]{FAD-variance-geometry-modified}
-\caption[Failure assessment diagram of center-cracked panel and compact tension specimen]{\label{fig:fad-ccp-ct} Failure assessment diagram of center-cracked panel and compact tension specimen \cite{epri1981}}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[width=0.6\columnwidth]{FAD-variance-aW-modified}
+\includegraphics[width=0.7\columnwidth]{FAD-variance-aW-modified}
 \caption[Failure assessment diagram of center-cracked panel with multiple crack sizes]{\label{fig:fad-crack-lengths} Failure assessment diagram of center-cracked panel with multiple crack sizes \cite{epri1981}}
 \end{figure}
 
@@ -652,7 +652,7 @@ No such set of equations exists for the elastic-plastic regime, thus other metho
 Annex A6 of ASTM E2899-15 recommends finite element analysis using domain integrals to calculate \J.
 
 The analysis requirements of ASTM E2899 go far beyond earlier standards for measuring fracture toughness.
-As seen in \Cref{tab:astm-analysis-requirements}, earlier standards can be completed with pocket calculators or simple spreadsheets, tools that are well within reach of any engineer or test facility, and the calculations are easily verified and checked by others.
+As seen in \Cref{tab:astm-analysis-requirements},
 \begin{table}[tbp]
 \caption{\label{tab:astm-analysis-requirements} Analysis Requirements in Several ASTM Standards}
 \begin{tabular}{c p{0.5\textwidth} p{0.3\textwidth}} \toprule
@@ -663,8 +663,9 @@ E740 & Calculate \K with algebraic equations at two positions, report higher val
 E1820 & Calculate \K with algebraic equations. EPRI method with \Jel calculated from \K and \Jpl calculated from area under load-displacement curve and algebraic equations & Spreadsheet \\ \bottomrule
 \end{tabular}
 \end{table}
+earlier standards can be completed with pocket calculators or simple spreadsheets, tools that are well within reach of any engineer or test facility, and the calculations are easily verified and checked by others.
 Only ASTM E2899 requires an elastic-plastic finite element analysis to calculate \J.
-Not only is the software do perform this analysis much more expensive than a spreadsheet or calculator, it requires a much higher level of skill to create an accurate analysis, and is much more difficult for others to verify and check the results.
+Not only is the software used to perform this analysis much more expensive than a spreadsheet or calculator, it requires a much higher level of skill to create an accurate analysis, and is much more difficult for others to verify and check the results.
 
 \subsection{Interpolation}
 
@@ -733,13 +734,13 @@ Additional error in higher-level models is due to these simplifications, and als
 \subsection{Model Development}
 
 In ASME V\&V procedures, model development is composed of four tasks:
-\begin{itemize}
+\begin{enumerate}
 \item formulation of conceptual models,
 \item converting the conceptual model to a computational model,
 \item revising models during V\&V,
 and 
 \item quantifying sensitivity and uncertainty of parameters in the model.
-\end{itemize}
+\end{enumerate}
 Model development assumes that the physical system of interest, use of the model, and accuracy requirements have been previously defined.
 
 Development of the conceptual model includes defining fundamental assumptions such as
@@ -797,8 +798,8 @@ Though uncertainty is obviously a part of an experimental program, it is also pr
 Uncertainties at any stage of development can be broadly classified as aleatory (or irreducible) and epistemic (or reducible).
 Aleatory uncertainties are inherent in physical systems, and have root causes in the variation of physical properties and processes.
 No manufactured component is free from geometric deviations, no material property has exact textbook values in every specimen, and no assembly is constructed with exact fastener preloading, alignment, etc.
-Though this uncertainty can never be eliminated, it can certainly by quantified by conducting tests to establish statistical characteristics for each parameter (mean, variance, distribution type).
-Once the uncertainty in parameters is quantified, their variability can be propagated through simulations with probabilistic analysis, which sets lower bounds on how much variability will be present in the simulation results.
+Though this uncertainty can never be eliminated, it can be quantified by conducting tests to establish statistical characteristics for each parameter (mean, variance, distribution type).
+Once the uncertainty in parameters is quantified, their variability can be propagated through simulations with probabilistic analysis, setting lower bounds on how much variability will be present in the simulation results.
 
 Epistemic uncertainties are the result of incomplete information or knowledge.
 Two major categories of reducible uncertainties are statistical uncertainty and modeling uncertainty.

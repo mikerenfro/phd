@@ -45,7 +45,7 @@ Inside the crack front, some nodes may be pushed across the \(z=0\) plane.
 
 WARP3D supports the definition of unmeshed contact surfaces, either finite-sized rectangular planes, cylinders, or spheres.
 Elements that intersect these contact surfaces have a penalty force applied to nodes, where the magnitude of the force is proportional to the nodes' penetration distance.
-The common practice in finite element modeling would be use a perfectly rigid contact surface, or a contact body with a stiffness several orders of magnitude larger than the local stiffness of the meshed model in the contact region.
+The common practice in finite element modeling would be to use a perfectly rigid contact surface, or a contact body with a stiffness several orders of magnitude larger than the local stiffness of the meshed model in the contact region.
 
 As WARP3D does not support perfectly rigid contact surfaces, a finite stiffness value must be selected.
 This stiffness value should be a few orders of magnitude higher than the stiffness of elements making contact, but the element stiffnesses themselves are not constant.

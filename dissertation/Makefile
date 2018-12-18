@@ -22,3 +22,8 @@ clean:
 	rm -f dissertation-renfro.{$(CLEANEXTS)}
 	rm -f presentation-renfro-slides.{$(CLEANEXTS)}
 	rm -f presentation-renfro-notes.{$(CLEANEXTS)}
+
+realclean: clean
+	rm -f dissertation-renfro.pdf
+	rm -f dissertation-renfro-embedded.pdf
+	rm -f presentation-renfro-notes.pdf presentation-renfro-slides.pdf

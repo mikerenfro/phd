@@ -15,7 +15,7 @@
 % [3] http://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
 % [4] http://tex.stackexchange.com/questions/3090/packages-that-need-to-be-included-in-a-specific-order
 % [5] http://www.macfreek.nl/mindmaster/LaTeX_package_conflicts
-% \usepackage{beamerarticle}
+\usepackage{beamerarticle}
 
 % https://tex.stackexchange.com/questions/427451/dot-between-chapter-number-and-figure-number-disapear-after-update
 \makeatletter
@@ -33,7 +33,8 @@
 \defbibheading{bibliography}[\bibname]{%
   \thispagestyle{plain}%
   \phantomsection%
-  \addcontentsline{toc}{chapter}{\bibname}%
+  \addtocontents{toc}{\vspace*{-\onelineskip}}
+  \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bibname}}{\bibname}}%
   \beforepartskip%
   \begin{center}%
     \bfseries{\MakeUppercase{\bibname}}%

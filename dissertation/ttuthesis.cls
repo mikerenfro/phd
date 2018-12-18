@@ -823,7 +823,7 @@ Member 3 Name\\(fix your thesis.tex)}
   \fi%
   \beforepartskip%
   \begin{center}%
-    bibname goes here \bfseries{\MakeUppercase{\bibname}}%
+    \bfseries{\MakeUppercase{\bibname}}%
   \end{center}%
   \afterpartskip%
   \bibmark%
