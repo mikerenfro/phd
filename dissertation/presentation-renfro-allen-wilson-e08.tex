@@ -42,12 +42,6 @@
 \begin{frame}[plain]
 \maketitle
 \note{
-Thanks, Dr. Wilson.
-\vfill
-Good afternoon, everyone.
-\vfill
-The title of my research is Analysis of Surface Cracks in Plates Loaded
-in Bending under Elastic-Plastic and Fully-Plastic Conditions
 \vfill
 }
 \end{frame}
@@ -67,13 +61,6 @@ in Bending under Elastic-Plastic and Fully-Plastic Conditions
 \item \linktopage{35}{Appendix}
 \end{itemize}
 \note{
-I'll start with a introduction to a few fundamental concepts of fracture mechanics to provide some context,
-\vfill
-then do a literature review that leads up to the motivation for this research,
-\vfill
-followed by an overview of some related work I did earlier to demonstrate the techniques I'd end up using for the main part of the research.
-\vfill
-Then, I'll discuss the plan for the new research, the results of that research, and some conclusions and recommendations for future work.
 \vfill
 }
 \end{frame}
@@ -99,15 +86,6 @@ Then, I'll discuss the plan for the new research, the results of that research, 
 \end{columns}
 
 \note{
-The state of stress around some cracks can get pretty complicated.
-\vfill
-There's already been a lot of work done on geometries where the cracks go all the way through the part
-\vfill
-Among the part-through crack geometries shown here, the semi-elliptical surface crack is one of the simplest, and is the subject of ASTM E2899
-\vfill
-Handbook or curve-fit solutions exist for the other crack geometries, but only in the linear elastic regime.
-\vfill
-For elastic-plastic materials, the NASA TASC program covers semi-elliptical surface cracks, but only for pure tension, not for bending.
 \vfill
 }
 \end{frame}
@@ -119,13 +97,6 @@ Research goals
 \item Modified TASC program for bending or tension analysis
 \end{itemize}
 \note{
-So the primary goals of this research are:
-\vfill
-A verified and validated set of bending models comparable to the TASC's tension models
-\vfill
-A modified version of TASC that works for both tension and bending
-\vfill
-And an investigation of two other estimation techniques for elastic-plastic fracture: EPRI and load separation
 \vfill
 }
 \end{frame}
@@ -162,13 +133,6 @@ No such curve fit exists for elastic-plastic materials.
 \end{column}
 \end{columns}
 \note{
-The best consensus solution for stress intensity factors for surface cracks in bending is partially given here.
-\vfill
-It starts out simply enough, but the various correction factors just pile up on each other
-\vfill
-and it's just curve-fit after curve-fit covering 16 equations.
-\vfill
-Tension cases only require 10 equations, and neither of these cover elastic-plastic materials.
 \vfill
 }
 \end{frame}
@@ -196,9 +160,6 @@ ASTM E2899: Standard Test Method for Measurement of Initiation Toughness in Surf
 \end{column}
 \end{columns}
 \note{
-So now we get to the current ASTM standard for measuring fracture toughness for flat plates with surface cracks, E2899.
-\vfill
-On the left is an example specimen including a cross section of its semi-elliptical surface crack, and on the right is a specimen loaded into a four-point bending configuration.
 \vfill
 }
 \end{frame}
@@ -216,13 +177,6 @@ On the left is an example specimen including a cross section of its semi-ellipti
 \item If EPFM, {\bfseries use nonlinear FEA} to calculate \J
 \end{itemize}
 \note{
-In ASTM E2899, the first few steps to calculating stress conditions at the crack tip are purely related to experimental measurement.
-\vfill
-For linear elastic conditions, a series of equations derived from experimental curve fits can be used to calculate \K.
-\vfill
-But for elastic-plastic conditions, no such series of equations exists to calculate \J, and finite element analysis is required in the standard.
-\vfill
-This last step is a major departure compared to other standards, and would normally require construction of models for every tested geometry and material.
 \vfill
 }
 \end{frame}
@@ -249,13 +203,6 @@ Mechanics of bending is more complex than for tension (constraint, crack closure
 \end{column}
 \end{columns}
 \note{
-The vast majority of ASTM standards focus on experimental techniques, with some basic graphical constructions or simple equations to verify the test was done properly
-\vfill
-But ASTM E2899 requires finite element analysis for elastic-plastic materials, and this can be a burden on those performing these kinds of tests.
-\vfill
-The NASA TASC program satisfies those analysis requirements, but only works for tension, not in bending.
-\vfill
-Bending analysis is more complex than tension analysis: cracks can close, and the state of stress around the crack front makes for variable constraint conditions.
 \vfill
 }
 \end{frame}
@@ -279,21 +226,13 @@ TASC: interpolation code using database of 600 EPFM results for flat plates in t
 \end{column}
 \end{columns}
 \note{
-But in 2014, Phillip Allen at NASA released TASC, the tool for analysis of surface cracks.
-\vfill
-TASC includes elastic-plastic results from 600 finite element analyses: all combinations of 20 normalized geometries and 30 normalized materials shown here.
-\vfill
-It interpolates results for intermediate values, but only includes models for plates in tension.
-\vfill
-No bending results are included, so work remained on satisfying the entire E2899 standard.
 \vfill
 }
 \end{frame}
 
 \part{Modeling Preparation for Research Tasks%
-\note{Time check: 10--12 minutes here.
-\vfill
-It made sense to develop my modeling techniques for surface cracks in bending on existing results, and that's what's shown in this part.\vfill}%
+\note{
+\vfill}
 }
 
 %\section{Verification of Two TASC Cases}
@@ -314,23 +253,13 @@ Verification of two TASC cases, applying procedure to a new material (\(\frac{E}
 \end{column}
 \end{columns}
 \note{
-Then I moved on to digging into the internals of the TASC model database,
-\vfill
-seeing if I could make models that would match two of the ones from the database,
-\vfill
-and a third model to test the limits of the interpolation method.
-\vfill
-On this figure, the lines represent TASC results for \(E=100\) and \(E=200\), with an interpolated result for \(E=150\).
-\vfill
-The circles represent my model results at each modulus, and you can see that the results are identical for \(E=100\) and \(E=200\), and that the interpolated TASC result is a few percent more compliant than the actual results from the same modulus.
 \vfill
 }
 \end{frame}
 
 \part{Research Plan for Bending Models and Modified TASC Program%
-\note{Time check: be at the 15--17 minute mark here.
-\vfill
-So now we get to the plan for the new research work\vfill}
+\note{
+\vfill}
 }
 
 \section{Creating Plate Models}
@@ -357,19 +286,6 @@ So now we get to the plan for the new research work\vfill}
 \end{column}
 \end{columns}
 \note{
-The dimensions on each plate follow the same rules.
-\vfill
-Each model represents 1/4 of the full experimental plate, and has thickness of 1 inch.
-\vfill
-Model width is 5 times larger than either the crack half width or the plate thickness, whichever is larger.
-\vfill
-The plane where the inner rollers would appear will be a distance W from the center, and the line representing the outer rollers will be spaced at twice that distance.
-\vfill
-The whole plate will extent 10\% past the outer roller location.
-\vfill
-All these models will start from a single input file for the FEACrack program, and a Python script will run FEACrack with command-line parameters to adjust dimensions and write a new input file for WARP3D for each of 20 geometries.
-\vfill
-After that, the same Python script can adjust material properties in the 20 WARP3D input files and write a new input file for each of 30 materials.
 \vfill
 }
 \end{frame}
@@ -396,11 +312,6 @@ After that, the same Python script can adjust material properties in the 20 WARP
 \end{column}
 \end{columns}
 \note{
-The TASC literature indicated models were loaded until \J values were high enough to drive this dimensionless deformation formula below 25,
-\vfill
-but looking at the full set of M values recorded in the TASC database shown in the left figure, it's clear many of the models didn't reach that deformation level.
-\vfill
-The real criteria for loading is to load the model heavily enough to straighten the \J-CMOD curves shown in the right figure so we can accurately extrapolate beyond the applied load.
 \vfill
 }
 \end{frame}
@@ -424,9 +335,6 @@ at \(\phi=\) \SI{30}{\SIUnitSymbolDegree}
 \end{column}
 \end{columns}
 \note{
-As a result, since we have a full set of \J-\(\phi\)-CMOD data after running a model, my plan was to increase loads until the two criteria shown here were met at \(\phi=\) \SI{30}{\SIUnitSymbolDegree}.
-\vfill
-This ensures that the last 40\% of the \J-CMOD curve is consistently straight, and any major curvature is confined to the first 60\% of the range.
 \vfill
 }
 \end{frame}
@@ -450,11 +358,6 @@ Displacement control for tension models makes optimization easier
 \end{column}
 \end{columns}
 \note{
-Early versions of satisfying this load criteria for tension models used displacement boundary conditions, and some convenient optimizations could take place.
-\vfill
-Because we're effectively adjusting strain to match a target stress, the left stress-strain curve can be transformed to the form on the right, and we can do a secant method to find the strain required to drive the transformed stress value to zero.
-\vfill
-Just move on a tangent at wherever we are on the transformed curve, and we quickly end up at the desired strain value.
 \vfill
 }
 \end{frame}
@@ -478,11 +381,6 @@ Load control for bending models makes optimization more difficult
 \end{column}
 \end{columns}
 \note{
-Unfortunately, the bending models have to operate with traction boundary conditions, where we effectively adjust applied stress to match a target strain.
-\vfill
-The secant method won't work, as our first step would run us way off the right side of the transformed graph.
-\vfill
-So we just have to take small steps and stop whenever we see the curve has straightened out enough.
 \vfill
 }
 \end{frame}
@@ -509,11 +407,6 @@ Abaqus validation
 \end{column}
 \end{columns}
 \note{
-Since we're going to spend a lot of time finding \J values for the models, it makes sense to do some checks to ensure the \J values are accurate.
-\vfill
-First, a subset of the models will be run in Abaqus with identical meshes.
-\vfill
-Second, as \J values can be calculated for any set of elements surrounding the crack front, those \J values should converge to a final result as we add more elements and capture more of the strain energy and work done inside the plastic zone.
 \vfill
 }
 \end{frame}
@@ -530,22 +423,11 @@ Second, as \J values can be calculated for any set of elements surrounding the c
 \item Validate a load-CMOD curve against existing bending experimental data
 \end{itemize}
 \note{
-For modifications to the TASC program, the goal is to make the smallest set of changes required to support bending.
-\vfill
-We can't break tension results, and most of the code assumes a certain arrangement of data in the database.
-\vfill
-So we'll make a results\_bending database alongside the existing results database.
-\vfill
-Any equations that are only applicable for tension will be replaced with a check for which type of analysis we're running, and then picking the right equation
-\vfill
-There shouldn't need to be any changes to the interpolation parts of TASC
-\vfill
-and ideally, we'll be able to reproduce an experimental load-CMOD curve from a four-point bend experiment with good accuracy.
 \vfill
 }
 \end{frame}
 
-\part{Results and Discussion \note{So how did all of this turn out compared to the original plan?\vfill}}
+\part{Results and Discussion \note{\vfill}}
 
 \section{Improvements to Initial Bending Models}
 
@@ -569,9 +451,6 @@ and ideally, we'll be able to reproduce an experimental load-CMOD curve from a f
 \end{column}
 \end{columns}
 \note{
-During the \J convergence study, some of the models had local minima in the \J values at weird locations, like the one on the right.
-\vfill
-They did converge well as we used more elements around the crack front, but converged to unexpected values sometimes.
 \vfill
 }
 \end{frame}
@@ -597,17 +476,6 @@ Why is \J higher at \(\phi=90\) in some cases? What happens to plate deflection?
 \end{column}
 \end{columns}
 \note{
-Looking at how the plate deformed,
-\vfill
-where orange is basically zero deflection,
-\vfill
-red is positive deflection, and
-\vfill
-yellow and below are negative deflections,
-\vfill
-it's clear that regions deep in the crack are pushing out past the symmetry plane, which is physically impossible.
-\vfill
-This never happens on tension models, as the plate cross section is always being stretched. But in bending, the underside of the plate is effectively being compressed, and it's pushing some of the cracked material along with it.
 \vfill
 }
 \end{frame}
@@ -620,11 +488,6 @@ This never happens on tension models, as the plate cross section is always being
 \caption{Plate deflection before and after addition of elastic boundary}
 \end{figure}
 \note{
-So an elastic boundary was added to the symmetry plane.
-\vfill
-A rigid boundary plane would be more common, but WARP3D doesn't support those.
-\vfill
-The effect of the boundary on displacement can be seen here, where now all the plate material stays below the symmetry plane.
 \vfill
 }
 \end{frame}
@@ -647,9 +510,6 @@ The effect of the boundary on displacement can be seen here, where now all the p
 \end{column}
 \end{columns}
 \note{
-In terms of \J values, the plane has no effect toward the free surface (the solid and dotted lines),
-\vfill
-but greatly reduces the \J values seen deep in the crack (the dashed line)
 \vfill
 }
 \end{frame}
@@ -672,7 +532,6 @@ but greatly reduces the \J values seen deep in the crack (the dashed line)
 \end{column}
 \end{columns}
 \note{
-Looking at the effect on \J around the crack front, it's clear this removed the local minimum for \J that was the original symptom of the problem.
 \vfill
 }
 \end{frame}
@@ -697,11 +556,6 @@ Looking at the effect on \J around the crack front, it's clear this removed the 
 \end{column}
 \end{columns}
 \note{
-Next up is making sure that FEACrack and WARP3D can reproduce a load-displacement curve from a four-point bend experiment.
-\vfill
-A plate model with the right material properties and a crack of the correct depth and aspect ratio was created, and the blue x marks show its load-CMOD curve.
-\vfill
-The solid line represents a NASA four-point bend experiment, and matches the prediction within a few percent at most.
 \vfill
 }
 \end{frame}
@@ -727,17 +581,6 @@ The solid line represents a NASA four-point bend experiment, and matches the pre
 \end{column}
 \end{columns}
 \note{
-Finally, in terms of TASC work, the very minimal user interface changes can be seen in the top left,
-\vfill
-where a radio button switching between tension and bending analysis has been added,
-\vfill
-as well as two text entries for roller spans.
-\vfill
-After entering in the correct crack geometry, plate dimensions, and material properties, the bottom left figure shows the predicted load-CMOD curve.
-\vfill
-The same curve is shown on the right and compared to the original experimental data.
-\vfill
-Again, the prediction is within percentage points all along the experimental curve.
 \vfill
 }
 \end{frame}
@@ -762,22 +605,12 @@ Again, the prediction is within percentage points all along the experimental cur
 \end{column}
 \end{columns}
 \note{
-For validating \J values from WARP3D against Abaqus, you can see a representative model on the left figure.
-\vfill
-A rigid plane has been added similar to the elastic boundary added in WARP3D.
-\vfill
-Looking at some of the \J values from Abaqus shown with solid markers, versus the WARP3D results shown with lines,
-\vfill
-the \J values are coincident except at the free surface where \(\phi=0\), and even those are pretty close.
 \vfill
 }
 \end{frame}
 
 \part{Conclusions and Recommendations for Future Work%
-\note{Time check: be at 30--35 minute mark here.
-\vfill
-So what conclusions can we draw, and where do we go from here?
-\vfill}%
+\note{\vfill}%
 }
 
 \section{Conclusions}
@@ -809,17 +642,6 @@ Database of 600 elastic-plastic finite element results for surface cracks in ben
 \end{column}
 \end{columns}
 \note{
-First and foremost, we now have a database of 600 elastic-plastic FEA results for surface cracks in bending.
-\vfill
-These models had some extra challenges compared to tension models, and those were overcome.
-\vfill
-A subset of the results have been verified and validated against Abaqus models and against experimental data
-\vfill
-The TASC program has been modified to support bending, at least as far as predicting load-CMOD curves.
-\vfill
-All of this means it's now possible to satisfy all the requirements of ASTM E2899 in both tension and bending, without building custom models for each test,
-\vfill
-and this greatly reduces the analytical burden on anyone performing tests under ASTM E2899.
 \vfill
 }
 \end{frame}
@@ -847,25 +669,6 @@ and this greatly reduces the analytical burden on anyone performing tests under 
 \item {\bfseries More experimental data needed for these.}
 \end{enumerate}
 \note{
-For future work related to this research,
-\vfill
-there's still some work to be done in TASC modifications and testing, as I didn't modify anything beyond what was necessary to validate a load-CMOD curve
-\vfill
-some additional data points for crack geometry and material models may be worthwhile,
-\vfill
-as well as seeing if an alternative interpolation method will provide better agreement with experimental results.
-\vfill
-As WARP3D supports contact modeling, it may be worth replacing the traction conditions used in bending models with contact modeling of rigid rollers to more closely match experimental conditions
-\vfill
-For EPRI \hone estimation, we need some more detailed examination of its limitations, or where I may have a mistake in my current models
-\vfill
-Limitations could be related to crack shape, tension versus bending, or material properties.
-\vfill
-Finally, for load separation, there may be an alternative length measure other than the one from R6 that will collapse the \Sij values onto a single curve.
-\vfill
-Now for either of the EPRI \hone or the load separation items, each of those could be someone's dissertation on their own, especially if experiments are involved.
-\vfill
-And more experimental data is needed for all of these items. It's pretty sparse, and will improve confidence with any numerical method.
 \vfill
 }
 \end{frame}
@@ -886,17 +689,6 @@ Thanks to:
 \end{itemize}
 \vfill
 \note{
-That's it for the presentation.
-\vfill
-I'd like to thank Dr. Chris Wilson and my committee members: Dr. Brian O'Connor, Dr. Sally Pardue, Dr. Guillermo Ramirez, and Dr. Dale Wilson.
-\vfill
-Facilities from both the Center for Manufacturing Research and Information Technology Services were instrumental at different phases of this research.
-\vfill
-Dr. Phillip Allen and ASTM Committee E08 provided a foundation for my research, and hopefully a permanent home for its results.
-\vfill
-And finally, my friends and family who have been consistently encouraging through this whole thing.
-\vfill
-Any questions?
 \vfill
 }
 \end{frame}
