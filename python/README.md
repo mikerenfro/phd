@@ -7,9 +7,9 @@
 - `plate_runner.py`: Main python script used for simulations (requires local Python modules `postprocess.py`, `preprocess.py`, `section.py`, `solve.py`, `util.py`, and usually requires a `*config.py` to define the model parameters)
 - `preprocess.py`, `postprocess.py`, `solve.py`, `util.py`: functions useful for creating WARP3D models, evaluating WARP3D output, calculating model objective functions, and manipulating semi-structured text files.
 - `section.py`: Dr. Drang's module for section properties (http://leancrew.com/all-this/2018/01/python-module-for-section-properties/), used to calculate initial bending stress value
-- `*msh.out`: Mesh data generated from FEACrack, specific to a particular geometry
 - `bend.elt`, `tens.elt`: FEACrack input file, specific to a particular loading configuration
 
 WARP3D input files are in the `warp3d-inputs` directory, organized by loading configuration and geometry.
 
 - `*wrp.inp.gz`: gzipped WARP3D input files generated from `plate_creator.py` and FEACrack, specific to a particular loading configuration, geometry, and material
+- `*msh.out.gz`: gzipped mesh data generated from FEACrack, specific to a particular geometry
